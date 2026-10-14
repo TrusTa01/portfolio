@@ -1,0 +1,46 @@
+# ------- Node -------
+node_modules/
+
+# ------- Build output -------
+dist/
+.astro/
+
+# ------- IDE -------
+.idea/
+*.iml
+*.iws
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# ------- AI & tooling -------
+.cursor/
+.claude/scheduled_tasks.lock
+.claude/settings.local.json
+.swarm/
+prompt.md
+.superpowers/
+.claude-flow/
+claude-flow.config.json
+.mcp.json
+graphify-out/
+
+# ------- OS -------
+.DS_Store
+Thumbs.db
+
+# ------- Secrets -------
+.env
+.env.*
+!.env.example
+!**/*.example
+
+# ------- Logs -------
+*.log
+gitleaks-report.json
+
+# ------- Other -------
+scripts/**/*.local.*
