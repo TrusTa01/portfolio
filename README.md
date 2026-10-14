@@ -27,6 +27,7 @@ The dev server runs at <http://localhost:4321>.
 | `npm run dev` | Start the dev server |
 | `npm run build` | Build the static site into `dist/` |
 | `npm run preview` | Serve the built site locally |
+| `npm run check` | Type-check the project with `astro check` |
 
 ## Deployment
 

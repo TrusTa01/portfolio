@@ -1,6 +1,7 @@
 {
   "name": "portfolio",
   "type": "module",
+  "private": true,
   "version": "0.0.1",
   "engines": {
     "node": ">=22.12.0"
@@ -9,7 +10,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
