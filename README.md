@@ -2,7 +2,7 @@
 
 Personal portfolio website of a Flutter developer, in Russian and English.
 
-> Work in progress: only the project scaffold exists so far.
+> Work in progress: the home page (RU/EN), theme switch, header and footer are done. Projects and resume come next.
 
 ## Stack
 
@@ -11,7 +11,7 @@ Personal portfolio website of a Flutter developer, in Russian and English.
 
 ## Getting started
 
-Requires Node.js 22.12 or newer.
+Requires Node.js 22.18 or newer.
 
 ```bash
 npm install
@@ -28,6 +28,9 @@ The dev server runs at <http://localhost:4321>.
 | `npm run build` | Build the static site into `dist/` |
 | `npm run preview` | Serve the built site locally |
 | `npm run check` | Type-check the project with `astro check` |
+| `npm test` | Run unit tests |
+| `npm run test:build` | Check the built `dist/` (run `npm run build` first) |
+| `npm run verify` | Run check, unit tests, build and build tests |
 
 ## Deployment
 

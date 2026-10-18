@@ -11,7 +11,7 @@ Personal portfolio website of a Flutter developer. Static Astro site, Russian an
 ## Stack
 
 - Astro 7, TypeScript (strict), static output
-- Node >= 22.12
+- Node >= 22.18
 - Planned in later stages (add only when the stage calls for it): Tailwind CSS, `@astrojs/sitemap`, Motion
 
 ## Commands
