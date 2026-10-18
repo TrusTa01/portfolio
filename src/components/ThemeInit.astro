@@ -1,0 +1,15 @@
+---
+import { STORAGE_KEYS } from '../scripts/storage.ts';
+import { LIGHT_CLASS, LIGHT_THEME } from '../theme/theme.ts';
+
+const JS_CLASS = 'js';
+---
+<script is:inline define:vars={{ key: STORAGE_KEYS.theme, light: LIGHT_CLASS, lightTheme: LIGHT_THEME, jsClass: JS_CLASS }}>
+  const root = document.documentElement;
+  root.classList.add(jsClass);
+  try {
+    if (localStorage.getItem(key) === lightTheme) root.classList.add(light);
+  } catch (error) {
+    // Storage is unavailable: keep the default dark theme.
+  }
+</script>

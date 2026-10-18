@@ -1,0 +1,27 @@
+---
+import { LOCALES, type Locale } from '../i18n/locales.ts';
+import { switchLocalePath } from '../i18n/paths.ts';
+import { t } from '../i18n/t.ts';
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+---
+<nav aria-label={t(locale, 'language.label')} class="flex items-center gap-1 text-sm">
+  {LOCALES.map((target) => (
+    <a
+      href={switchLocalePath(Astro.url.pathname, target)}
+      aria-label={t(locale, `root.${target}`)}
+      hreflang={target}
+      lang={target}
+      data-locale-link
+      data-locale={target}
+      aria-current={target === locale ? 'true' : undefined}
+      class:list={[
+        'rounded px-2 py-1 uppercase hover:text-[var(--accent)]',
+        target === locale ? 'font-semibold text-[var(--accent)]' : 'text-[var(--muted)]',
+      ]}
+    >
+      {target}
+    </a>
+  ))}
+</nav>
