@@ -1,6 +1,5 @@
 ---
 import { siteConfig } from '../site.config.ts';
-import { contactLinks, type ContactKind } from '../site/contacts.ts';
 import { identityLabel } from '../site/identity.ts';
 import { AVAILABLE_PAGES, pageHref, sectionHref } from '../navigation/nav.ts';
 import { t, type UiKey } from '../i18n/t.ts';
@@ -11,12 +10,8 @@ type FooterLink = { key: UiKey; href: string };
 
 const { locale } = Astro.props;
 const identity = identityLabel(siteConfig);
-const contacts = contactLinks(siteConfig);
-const hrefOf = (kind: ContactKind) => contacts.find((link) => link.kind === kind)?.href;
 
 const entries: { key: UiKey; href: string | undefined }[] = [
-  { key: 'header.github', href: hrefOf('github') },
-  { key: 'header.telegram', href: hrefOf('telegram') },
   { key: 'nav.projects', href: AVAILABLE_PAGES.projects ? pageHref(locale, 'projects') : undefined },
   { key: 'nav.resume', href: AVAILABLE_PAGES.resume ? pageHref(locale, 'resume') : undefined },
   { key: 'footer.contact', href: sectionHref(locale, 'contacts') },

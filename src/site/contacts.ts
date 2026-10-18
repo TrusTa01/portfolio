@@ -14,9 +14,9 @@ const HREF_BUILDERS: Record<ContactKind, (value: string) => string> = {
 };
 
 export const CONTACT_LABEL_KEYS: Record<ContactKind, UiKey> = {
-  telegram: 'header.telegram',
+  telegram: 'contact.telegram',
   email: 'contact.email',
-  github: 'header.github',
+  github: 'contact.github',
 };
 
 const CONTACT_ORDER: readonly ContactKind[] = ['telegram', 'email', 'github'];

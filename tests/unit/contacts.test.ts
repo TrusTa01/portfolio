@@ -28,8 +28,8 @@ test('no link ever has an empty href', () => {
 
 test('every contact kind has a label key', () => {
   assert.deepEqual(CONTACT_LABEL_KEYS, {
-    telegram: 'header.telegram',
+    telegram: 'contact.telegram',
     email: 'contact.email',
-    github: 'header.github',
+    github: 'contact.github',
   });
 });
