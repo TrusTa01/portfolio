@@ -2,20 +2,25 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { DEFAULT_LOCALE, LOCALES, LOCALE_TAGS } from './src/i18n/locales.ts';
 
-// Locales are defined once: key is the URL prefix, value is the BCP 47 tag used by the sitemap.
-const locales = { ru: 'ru-RU', en: 'en-US' };
-const defaultLocale = 'ru';
+const ROOT_PATHNAME = '/';
 
 // https://astro.build/config
 export default defineConfig({
   // Placeholder until the real domain is provided.
   site: 'https://example.com',
   trailingSlash: 'always',
-  integrations: [sitemap({ i18n: { defaultLocale, locales } })],
+  integrations: [
+    sitemap({
+      // The site root is a language chooser, not a content page.
+      filter: (page) => new URL(page).pathname !== ROOT_PATHNAME,
+      i18n: { defaultLocale: DEFAULT_LOCALE, locales: LOCALE_TAGS },
+    }),
+  ],
   i18n: {
-    locales: Object.keys(locales),
-    defaultLocale,
+    locales: [...LOCALES],
+    defaultLocale: DEFAULT_LOCALE,
     routing: { prefixDefaultLocale: true, redirectToDefaultLocale: false },
   },
   vite: { plugins: [tailwindcss()] },
