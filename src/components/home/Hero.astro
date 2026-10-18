@@ -1,0 +1,28 @@
+---
+import { AVAILABLE_PAGES, pageHref, sectionHref } from '../../navigation/nav.ts';
+import { t } from '../../i18n/t.ts';
+import type { Locale } from '../../i18n/locales.ts';
+import type { HomeContent } from '../../content/home-schema.ts';
+
+type Props = { locale: Locale; hero: HomeContent['hero'] };
+const { locale, hero } = Astro.props;
+---
+<section class="py-16">
+  <h1 class="text-4xl font-bold sm:text-5xl">{hero.title}</h1>
+  <p class="mt-4 max-w-2xl text-[var(--muted)]">{hero.description}</p>
+  <ul class="mt-6 flex flex-wrap gap-2">
+    {hero.chips.map((chip) => (
+      <li class="rounded-full border border-[var(--muted)]/40 px-3 py-1 text-sm">{chip}</li>
+    ))}
+  </ul>
+  <div class="mt-8 flex flex-wrap gap-3">
+    {AVAILABLE_PAGES.projects && (
+      <a href={pageHref(locale, 'projects')} class="rounded-md bg-[var(--accent)] px-4 py-2 font-medium text-[var(--bg)]">
+        {t(locale, 'home.cta.projects')}
+      </a>
+    )}
+    <a href={sectionHref(locale, 'contacts')} class="rounded-md border border-[var(--muted)]/40 px-4 py-2 font-medium hover:text-[var(--accent)]">
+      {t(locale, 'home.cta.contacts')}
+    </a>
+  </div>
+</section>

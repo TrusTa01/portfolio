@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/home/Hero.astro';
+import About from '../../components/home/About.astro';
+import Technologies from '../../components/home/Technologies.astro';
+import Services from '../../components/home/Services.astro';
+import Contacts from '../../components/home/Contacts.astro';
+import { getHome } from '../../content/home.ts';
+import { LOCALES, type Locale } from '../../i18n/locales.ts';
+import { t } from '../../i18n/t.ts';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const locale = Astro.params.lang as Locale;
+const home = await getHome(locale);
+---
+<BaseLayout locale={locale} title={t(locale, 'meta.home.title')} description={t(locale, 'meta.home.description')}>
+  <Hero locale={locale} hero={home.hero} />
+  <About locale={locale} about={home.about} />
+  <Technologies locale={locale} technologies={home.technologies} />
+  <Services locale={locale} services={home.services} />
+  <Contacts locale={locale} contacts={home.contacts} />
+</BaseLayout>

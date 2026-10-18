@@ -1,0 +1,30 @@
+hero:
+  title: I build mobile apps end to end
+  description: "Draft: a longer description of what I do goes here."
+  chips:
+    - Flutter
+    - Dart
+about:
+  paragraphs:
+    - "Draft: first paragraph about me."
+    - "Draft: second paragraph about me."
+technologies:
+  intro: "Draft: the technologies I work with."
+  items:
+    - Flutter
+    - Dart
+services:
+  - title: "Draft: service one"
+    tools:
+      - Flutter
+    result: "Draft: what the client gets from service one."
+  - title: "Draft: service two"
+    tools:
+      - Flutter
+    result: "Draft: what the client gets from service two."
+  - title: "Draft: service three"
+    tools:
+      - Flutter
+    result: "Draft: what the client gets from service three."
+contacts:
+  intro: "Draft: how to reach me."
