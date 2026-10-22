@@ -1,6 +1,9 @@
+import type { Locale } from './i18n/locales.ts';
+
 // Values are entered by the author. An empty string means "do not show".
 export type SiteConfig = {
-  name: string; // Display name, e.g. "Ann Smith".
+  domain: string; // Production host without scheme, e.g. "example.com".
+  name: Record<Locale, string>; // Display name per locale, e.g. { ru: "Анна", en: "Ann" }.
   nick: string; // Short handle, e.g. "ann_dev".
   telegram: string; // Username without @, not a URL.
   github: string; // Username, not a URL.
@@ -9,10 +12,11 @@ export type SiteConfig = {
 };
 
 export const siteConfig: SiteConfig = {
-  name: '',
+  domain: 'yuriyborovikov.com',
+  name: { ru: 'Юрий', en: 'Yuriy' },
   nick: '',
-  telegram: '',
-  github: '',
-  email: '',
+  telegram: 'yuriy_borovikov',
+  github: 'TrusTa01',
+  email: 'trusta01.dev@gmail.com',
   resumePdf: '',
 };

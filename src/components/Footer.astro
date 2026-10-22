@@ -9,7 +9,7 @@ type Props = { locale: Locale };
 type FooterLink = { key: UiKey; href: string };
 
 const { locale } = Astro.props;
-const identity = identityLabel(siteConfig);
+const identity = identityLabel(siteConfig, locale);
 
 const entries: { key: UiKey; href: string | undefined }[] = [
   { key: 'nav.projects', href: AVAILABLE_PAGES.projects ? pageHref(locale, 'projects') : undefined },
