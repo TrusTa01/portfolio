@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@custom-variant light (&:where(.light, .light *));
+
+/* Working palette, to be replaced during the visual polish stage. */
+:root {
+  --bg: #0b0b0f;
+  --fg: #ececf1;
+  --muted: #9a9aa8;
+  --accent: #8b8bff;
+}
+.light {
+  --bg: #fafafa;
+  --fg: #111114;
+  --muted: #5b5b66;
+  --accent: #4f46e5;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Blocks with data-reveal are hidden only when JS is enabled and motion is not reduced. */
+.js [data-reveal] {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+  }
+}

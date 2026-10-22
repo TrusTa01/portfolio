@@ -1,0 +1,34 @@
+---
+import { siteConfig } from '../site.config.ts';
+import { identityLabel } from '../site/identity.ts';
+import { localePath } from '../i18n/paths.ts';
+import { t } from '../i18n/t.ts';
+import type { Locale } from '../i18n/locales.ts';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import NavLinks from './NavLinks.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+type Props = { locale: Locale };
+const { locale } = Astro.props;
+const identity = identityLabel(siteConfig, locale);
+---
+<header class="border-b border-[var(--muted)]/30">
+  <div class="mx-auto flex max-w-5xl items-center gap-3 px-4 py-3">
+    {identity !== '' && <a href={localePath(locale)} class="font-semibold">{identity}</a>}
+    <NavLinks locale={locale} class="ml-4 hidden md:flex" />
+    <div class="ml-auto flex items-center gap-2">
+      <LanguageSwitcher locale={locale} />
+      <ThemeToggle locale={locale} />
+      <details class="relative md:hidden">
+        <summary class="grid size-9 cursor-pointer list-none place-items-center rounded-md border border-[var(--muted)]/40" aria-label={t(locale, 'nav.menu')}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </summary>
+        <div class="absolute right-0 z-10 mt-2 min-w-48 rounded-md border border-[var(--muted)]/30 bg-[var(--bg)] p-2">
+          <NavLinks locale={locale} class="flex flex-col" />
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

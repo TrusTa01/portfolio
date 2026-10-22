@@ -1,0 +1,23 @@
+---
+import { siteConfig } from '../../site.config.ts';
+import { CONTACT_LABEL_KEYS, contactLinks } from '../../site/contacts.ts';
+import { SECTION_IDS } from '../../navigation/nav.ts';
+import { t } from '../../i18n/t.ts';
+import type { Locale } from '../../i18n/locales.ts';
+import type { HomeContent } from '../../content/home-schema.ts';
+
+type Props = { locale: Locale; contacts: HomeContent['contacts'] };
+const { locale, contacts } = Astro.props;
+const links = contactLinks(siteConfig);
+---
+<section id={SECTION_IDS.contacts} class="scroll-mt-16 py-12">
+  <h2 class="text-2xl font-semibold">{t(locale, 'nav.contacts')}</h2>
+  <p class="mt-4 max-w-2xl">{contacts.intro}</p>
+  {links.length > 0 && (
+    <ul class="mt-4 flex flex-wrap gap-3">
+      {links.map((link) => (
+        <li><a href={link.href} class="text-[var(--accent)] hover:underline">{t(locale, CONTACT_LABEL_KEYS[link.kind])}: {link.label}</a></li>
+      ))}
+    </ul>
+  )}
+</section>

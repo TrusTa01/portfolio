@@ -1,0 +1,13 @@
+---
+import { SECTION_IDS } from '../../navigation/nav.ts';
+import { t } from '../../i18n/t.ts';
+import type { Locale } from '../../i18n/locales.ts';
+import type { HomeContent } from '../../content/home-schema.ts';
+
+type Props = { locale: Locale; about: HomeContent['about'] };
+const { locale, about } = Astro.props;
+---
+<section id={SECTION_IDS.about} class="scroll-mt-16 py-12">
+  <h2 class="text-2xl font-semibold">{t(locale, 'nav.about')}</h2>
+  {about.paragraphs.map((text) => <p class="mt-4 max-w-2xl">{text}</p>)}
+</section>

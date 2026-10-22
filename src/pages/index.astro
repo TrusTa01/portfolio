@@ -1,16 +1,29 @@
 ---
----
+import '../styles/global.css';
+import HeadBase from '../components/HeadBase.astro';
+import { DEFAULT_LOCALE, LOCALES } from '../i18n/locales.ts';
+import { localePath } from '../i18n/paths.ts';
+import { t } from '../i18n/t.ts';
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+const NOSCRIPT_TARGET = localePath(DEFAULT_LOCALE);
+---
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <HeadBase />
+    <title>{t(DEFAULT_LOCALE, 'root.title')}</title>
+    <noscript><meta http-equiv="refresh" content={`0; url=${NOSCRIPT_TARGET}`} /></noscript>
+    <script>
+      import '../scripts/root-redirect.ts';
+    </script>
+  </head>
+  <body class="grid min-h-screen place-items-center">
+    <main class="text-center">
+      <p class="mb-4">{t(DEFAULT_LOCALE, 'root.choose')}</p>
+      <ul class="flex justify-center gap-4">
+        {LOCALES.map((locale) => (
+          <li><a href={localePath(locale)} lang={locale} class="text-[var(--accent)] hover:underline">{t(locale, `root.${locale}`)}</a></li>
+        ))}
+      </ul>
+    </main>
+  </body>
 </html>

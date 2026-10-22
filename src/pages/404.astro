@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+import HeadBase from '../components/HeadBase.astro';
+import { DEFAULT_LOCALE, LOCALES } from '../i18n/locales.ts';
+import { localePath } from '../i18n/paths.ts';
+import { t } from '../i18n/t.ts';
+
+---
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <HeadBase />
+    <meta name="robots" content="noindex" />
+    <title>{t(DEFAULT_LOCALE, 'notFound.title')}</title>
+    <script>
+      import '../scripts/not-found.ts';
+    </script>
+  </head>
+  <body class="grid min-h-screen place-items-center">
+    <main class="px-4 text-center">
+      {LOCALES.map((locale) => (
+        <div data-not-found={locale} data-title={t(locale, 'notFound.title')} lang={locale} hidden={locale !== DEFAULT_LOCALE}>
+          <h1 class="text-3xl font-bold">{t(locale, 'notFound.title')}</h1>
+          <p class="mt-4 text-[var(--muted)]">{t(locale, 'notFound.text')}</p>
+          <a href={localePath(locale)} class="mt-6 inline-block text-[var(--accent)] hover:underline">{t(locale, 'notFound.home')}</a>
+        </div>
+      ))}
+    </main>
+  </body>
+</html>
