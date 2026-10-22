@@ -3,8 +3,10 @@ import assert from 'node:assert/strict';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { DEFAULT_LOCALE, LOCALES, LOCALE_TAGS } from '../src/i18n/locales.ts';
+import { siteConfig } from '../src/site.config.ts';
 
 const DIST = 'dist';
+const SITE_ROOT = `https://${siteConfig.domain}/`;
 const INDEX_FILE = 'index.html';
 const X_DEFAULT = 'x-default';
 const MARKUP_FILE = /\.(html|xml)$/;
@@ -50,9 +52,10 @@ for (const locale of LOCALES) {
         assert.ok(href?.endsWith(`/${l}${subPath}`), `${name}: hreflang ${LOCALE_TAGS[l]} href "${href}" must end with /${l}${subPath}`);
       }
       const root = hrefFor(X_DEFAULT);
-      assert.ok(
-        root !== undefined && /^https?:\/\/[^/]+\/$/.test(root),
-        `${name}: hreflang x-default href "${root}" must be the site root`,
+      assert.equal(
+        root,
+        SITE_ROOT,
+        `${name}: hreflang x-default href "${root}" must be the production site root`,
       );
       for (const other of LOCALES.filter((l) => l !== locale)) {
         const pair = join(DIST, other, pairPath);

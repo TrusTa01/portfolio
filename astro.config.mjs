@@ -3,13 +3,13 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { DEFAULT_LOCALE, LOCALES, LOCALE_TAGS } from './src/i18n/locales.ts';
+import { siteConfig } from './src/site.config.ts';
 
 const ROOT_PATHNAME = '/';
 
 // https://astro.build/config
 export default defineConfig({
-  // Placeholder until the real domain is provided.
-  site: 'https://example.com',
+  site: `https://${siteConfig.domain}`,
   trailingSlash: 'always',
   integrations: [
     sitemap({
