@@ -2,6 +2,10 @@
 
 Personal portfolio website of a Flutter developer. Static Astro site, Russian and English versions. Built stage by stage; the design spec and the staged plan are in `.superpowers/specs/` and `.superpowers/plans/` (local only, not in git).
 
+## Audience
+
+The site serves two audiences with one goal (getting the owner work): clients who hire a freelancer, and employers who hire for a job. Design, structure and copy must work for both. Take this into account in every design decision.
+
 ## Language
 
 - Write everything that goes into the repo in English: code, comments, commit messages, README, docs, branch names, identifiers.
@@ -35,6 +39,15 @@ Personal portfolio website of a Flutter developer. Static Astro site, Russian an
 - Apply SOLID, DRY, KISS and YAGNI, and keep Clean Architecture boundaries: pure logic (i18n, content visibility, config) has no Astro or DOM imports; components and pages only compose it; browser scripts stay in `src/scripts/`. Dependencies point inward, never from logic to UI.
 - One responsibility per file, function and component. Prefer small pure functions with explicit inputs over hidden state. Explicit types, no `any`.
 - Every pure-logic function gets a unit test. If the plan's code breaks these rules, follow the rules and note the deviation in the report.
+
+## Design skills
+
+Project-level skills in `.claude/skills/` (local only, gitignored). Use each for its own job so their advice does not collide:
+
+- `design-taste-frontend`: art direction and the first layout of a page (direction, composition, type, palette).
+- `impeccable`: critique, audit, accessibility, responsive checks and `DESIGN.md` with theme tokens.
+- `emil-design-eng`: motion, hover and focus states, and small interaction details.
+- Do not mix recommendations from several skills in one pass. When they disagree, name the conflict and let the user choose.
 
 ## Do not
 
