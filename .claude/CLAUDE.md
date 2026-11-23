@@ -1,6 +1,6 @@
 # Project Instructions
 
-Personal portfolio website of a Flutter developer. Static Astro site, Russian and English versions. Built stage by stage; the design spec and the staged plan are in `.superpowers/specs/` and `.superpowers/plans/` (local only, not in git).
+Personal portfolio website of a Flutter developer. Static Astro site, Russian and English versions. Built stage by stage; the site spec and the brief for the designer are in `.superpowers/specs/` (local only, not in git). The design concept is one page: its sources and build script are in `.superpowers/concept/`, the built file is `public/concept/index.html` (served as `/concept/`). The site root is currently an under-construction page.
 
 ## Audience
 
