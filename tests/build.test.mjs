@@ -2,7 +2,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
-import { DEFAULT_LOCALE, LOCALES, LOCALE_TAGS } from '../src/i18n/locales.ts';
+import { LOCALES, LOCALE_TAGS } from '../src/i18n/locales.ts';
+import { CONCEPT_PATH } from '../src/navigation/nav.ts';
 import { siteConfig } from '../src/site.config.ts';
 
 const DIST = 'dist';
@@ -71,16 +72,12 @@ test('no empty href in any built file', () => {
   }
 });
 
-test('root page: noscript redirect and visible links to every locale', () => {
+test('root page: under-construction page with a link to the concept, no redirect', () => {
   const file = join(DIST, INDEX_FILE);
   const html = read(file);
-  const noscript = html.match(/<noscript>[\s\S]*?<\/noscript>/)?.[0] ?? '';
-  const refresh = `<meta http-equiv="refresh" content="0; url=/${DEFAULT_LOCALE}/">`;
-  assert.ok(noscript.includes(refresh), `${rel(file)}: noscript lacks ${refresh}`);
-  const visible = html.replace(/<noscript>[\s\S]*?<\/noscript>/g, '');
-  for (const locale of LOCALES) {
-    assert.match(visible, new RegExp(`<a[^>]*href="/${locale}/"`), `${rel(file)}: no visible link to /${locale}/`);
-  }
+  assert.match(html, new RegExp(`<a[^>]*href="${CONCEPT_PATH}"`), `${rel(file)}: no link to ${CONCEPT_PATH}`);
+  assert.ok(!/http-equiv="refresh"/.test(html), `${rel(file)}: the root must not redirect`);
+  assert.ok(existsSync(join(DIST, CONCEPT_PATH, INDEX_FILE)), `${DIST}${CONCEPT_PATH}${INDEX_FILE} is missing`);
 });
 
 test('language switcher links to the other locale', () => {
