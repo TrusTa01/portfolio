@@ -1,13 +1,13 @@
 ---
 import '../styles/global.css';
+import { Image } from 'astro:assets';
 import HeadBase from '../components/HeadBase.astro';
-import ConstructionArt from '../components/ConstructionArt.astro';
+import construction from '../assets/under-construction.jpg';
 import { DEFAULT_LOCALE, LOCALES } from '../i18n/locales.ts';
 import { CONCEPT_PATH } from '../navigation/nav.ts';
 import { t } from '../i18n/t.ts';
 
-const primary = DEFAULT_LOCALE;
-const others = LOCALES.filter((locale) => locale !== DEFAULT_LOCALE);
+const [primary, ...others] = LOCALES;
 const CONCEPT_LABEL = LOCALES.map((locale) => t(locale, 'root.concept')).join(' / ');
 ---
 <html lang={DEFAULT_LOCALE}>
@@ -15,9 +15,9 @@ const CONCEPT_LABEL = LOCALES.map((locale) => t(locale, 'root.concept')).join(' 
     <HeadBase />
     <title>{t(DEFAULT_LOCALE, 'root.title')}</title>
   </head>
-  <body class="grid min-h-screen place-items-center px-4">
-    <main class="flex flex-col items-center gap-8 text-center">
-      <ConstructionArt />
+  <body class="grid min-h-screen place-items-center px-4 py-8">
+    <main class="flex w-full max-w-xl flex-col items-center gap-6 text-center">
+      <Image src={construction} alt={t(primary, 'root.soon.alt')} class="w-full rounded-2xl" widths={[480, 720, 1080]} sizes="(min-width: 36rem) 36rem, 100vw" />
       <div>
         <h1 class="text-3xl font-semibold" lang={primary}>{t(primary, 'root.soon')}</h1>
         {others.map((locale) => <p class="mt-2 text-[var(--muted)]" lang={locale}>{t(locale, 'root.soon')}</p>)}

@@ -6,6 +6,7 @@ export const SECTION_IDS = { about: 'about', contacts: 'contacts' } as const;
 
 // The design concept for the designer: a static page in public/concept/.
 export const CONCEPT_PATH = '/concept/';
+export const ROOT_PATH = '/';
 
 const ROUTES = { projects: '/projects/', resume: '/resume/' } as const;
 const ANCHOR_PREFIX = '#';
