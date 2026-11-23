@@ -20,6 +20,10 @@ dist/
 .cursor/
 .claude/scheduled_tasks.lock
 .claude/settings.local.json
+.claude/skills/
+.agents/
+.taste-skill/
+.playwright-mcp/
 .swarm/
 prompt.md
 .superpowers/
