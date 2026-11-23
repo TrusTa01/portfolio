@@ -28,10 +28,10 @@ test('no empty href in any built file', () => {
   }
 });
 
-test('root page: under-construction page with a link to the concept, no redirect', () => {
+test('root page: under-construction page without a link to the concept, no redirect', () => {
   const file = join(DIST, INDEX_FILE);
   const html = read(file);
-  assert.match(html, new RegExp(`<a[^>]*href="${CONCEPT_PATH}"`), `${rel(file)}: no link to ${CONCEPT_PATH}`);
+  assert.ok(!html.includes(CONCEPT_PATH), `${rel(file)}: must not link to ${CONCEPT_PATH}`);
   assert.ok(!/http-equiv="refresh"/.test(html), `${rel(file)}: the root must not redirect`);
   assert.ok(existsSync(join(DIST, CONCEPT_PATH, INDEX_FILE)), `${DIST}${CONCEPT_PATH}${INDEX_FILE} is missing`);
 });

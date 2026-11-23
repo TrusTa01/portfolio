@@ -25,7 +25,6 @@ export const en = {
   'root.en': 'English',
   'root.soon': 'Site under development',
   'root.soon.alt': 'A cat in a hard hat sitting on blueprints',
-  'root.concept': 'View the concept',
   'notFound.title': 'Page not found',
   'notFound.text': 'The page you are looking for does not exist or has been moved.',
   'notFound.home': 'Back to home',

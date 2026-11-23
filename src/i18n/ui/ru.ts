@@ -27,7 +27,6 @@ export const ru: Dictionary = {
   'root.en': 'English',
   'root.soon': 'Сайт в стадии разработки',
   'root.soon.alt': 'Кот в строительной каске сидит на чертежах',
-  'root.concept': 'Смотреть концепт',
   'notFound.title': 'Страница не найдена',
   'notFound.text': 'Такой страницы нет или она была перемещена.',
   'notFound.home': 'На главную',
