@@ -7,7 +7,8 @@ import { DEFAULT_LOCALE, LOCALES } from '../i18n/locales.ts';
 import { CONCEPT_PATH } from '../navigation/nav.ts';
 import { t } from '../i18n/t.ts';
 
-const [primary, ...others] = LOCALES;
+const [primary] = LOCALES;
+const SOON_CAPTION = LOCALES.map((locale) => t(locale, 'root.soon')).join(' / ');
 const CONCEPT_LABEL = LOCALES.map((locale) => t(locale, 'root.concept')).join(' / ');
 ---
 <html lang={DEFAULT_LOCALE}>
@@ -18,10 +19,7 @@ const CONCEPT_LABEL = LOCALES.map((locale) => t(locale, 'root.concept')).join(' 
   <body class="grid min-h-screen place-items-center px-4 py-8">
     <main class="flex w-full max-w-xl flex-col items-center gap-6 text-center">
       <Image src={construction} alt={t(primary, 'root.soon.alt')} class="w-full rounded-2xl" widths={[480, 720, 1080]} sizes="(min-width: 36rem) 36rem, 100vw" />
-      <div>
-        <h1 class="text-3xl font-semibold" lang={primary}>{t(primary, 'root.soon')}</h1>
-        {others.map((locale) => <p class="mt-2 text-[var(--muted)]" lang={locale}>{t(locale, 'root.soon')}</p>)}
-      </div>
+      <h1 class="text-3xl font-semibold">{SOON_CAPTION}</h1>
       <a href={CONCEPT_PATH} class="rounded-full bg-[var(--accent)] px-6 py-3 font-semibold text-[var(--bg)] hover:opacity-90">{CONCEPT_LABEL}</a>
     </main>
   </body>
