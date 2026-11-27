@@ -7,3 +7,6 @@
 *.avif binary
 *.woff2 binary
 *.pdf binary
+
+# Language stats: the static design concept is not site code
+public/concept/** linguist-vendored
