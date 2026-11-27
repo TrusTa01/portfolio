@@ -17,6 +17,6 @@ export const siteConfig: SiteConfig = {
   nick: '',
   telegram: 'yuriy_borovikov',
   github: 'TrusTa01',
-  email: 'trusta01.dev@gmail.com',
+  email: 'yuriy@yuriyborovikov.com',
   resumePdf: '',
 };
