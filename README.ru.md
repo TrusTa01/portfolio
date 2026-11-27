@@ -13,7 +13,7 @@
 
 Сайт опубликован · дизайн в работе
 
-[English](README.md) · **Русский**
+<a href="README.md"><img src="https://raw.githubusercontent.com/TrusTa01/TrusTa01/main/assets/lang/seg-en-off.svg" alt="English"></a><img src="https://raw.githubusercontent.com/TrusTa01/TrusTa01/main/assets/lang/seg-ru-on.svg" alt="Русский">
 
 </div>
 
